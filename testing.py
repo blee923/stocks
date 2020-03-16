@@ -1,8 +1,8 @@
 import datetime
 from finnhub import client as Finnhub
 import requests
+import apikey
 
-token = 'TOKEN'
 quote_url = "https://finnhub.io/api/v1/quote"
 
 client = Finnhub.Client(api_key="bpncrs7rh5ra872dndbg")
