@@ -5,10 +5,12 @@ import apikey
 
 quote_url = "https://finnhub.io/api/v1/quote"
 
-client = Finnhub.Client(api_key="bpncrs7rh5ra872dndbg")
+client = Finnhub.Client(api_key=token)
+
+
 
 if __name__ == '__main__':
-    client = Finnhub.Client(api_key="bpncrs7rh5ra872dndbg")
+    client = Finnhub.Client(api_key=token)
     while 1:
 
         companyName = input('What company stock prices would you like to see (symbol) ? ')
