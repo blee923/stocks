@@ -1,13 +1,19 @@
 import datetime
 from finnhub import client as Finnhub
+from flask import Blueprint, jsonify
 import requests
-import apikey
+from .apikey import token
 
 quote_url = "https://finnhub.io/api/v1/quote"
 
 client = Finnhub.Client(api_key=token)
 
+quoter = Blueprint('quoter', __name__)
 
+@quoter.route('/quote', methods=['GET'])
+def quote():
+    
+    return 'lol', 200
 
 if __name__ == '__main__':
     client = Finnhub.Client(api_key=token)
