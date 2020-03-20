@@ -10,14 +10,13 @@ client = Finnhub.Client(api_key=token())
 
 quoter = Blueprint('quoter', __name__)
 
-@quoter.route('/quote', defaults = {'companyName' : 'AMZN'})
 @quoter.route('/quote/<companyName>', methods=['GET'])
 def quote(companyName):
     result = client.quote(symbol=companyName)
     timestamp = datetime.datetime.fromtimestamp(result["t"])
 
-    return jsonify({'company name' : companyName, 'current price': result["c"], 'high price': result["h"], 'low price': result["l"], 
-    'timestamp of current daily bar': timestamp.strftime('%Y-%m-%d %H:%M:%S')}), 200
+    return jsonify({'companyName' : companyName, 'currentPrice': result["c"], 'highPrice': result["h"], 'lowPrice': result["l"], 'openingPrice': result["o"],
+    'timestamp': timestamp.strftime('%Y-%m-%d %H:%M:%S')}), 200
 
 if __name__ == '__main__':
     client = Finnhub.Client(api_key=token())
@@ -30,5 +29,5 @@ if __name__ == '__main__':
         timestamp = datetime.datetime.fromtimestamp(result["t"])
 
 
-        print('company name: ${0}\ncurrent price: ${1}\nhigh price: ${2}\nlow price: ${3}\nprevious close price: ${4}\ntimestamp of current daily bar: {5}'.format(result["c"], result["h"], 
-        result["l"], result["o"], result["pc"], timestamp.strftime('%Y-%m-%d %H:%M:%S')))
+        print('company name: {0}\ncurrent price: ${1}\nhigh price: ${2}\nlow price: ${3}\nopening price: ${4}\nprevious close price: ${5}\ntimestamp of current daily bar: {6}'.format(companyName, 
+        result["c"], result["h"], result["l"], result["o"], result["pc"], timestamp.strftime('%Y-%m-%d %H:%M:%S')))
