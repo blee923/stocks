@@ -1,0 +1,3 @@
+[submodule "stocks-frontend"]
+	path = stocks-frontend
+	url = https://github.com/blee923/stocks-frontend.git
